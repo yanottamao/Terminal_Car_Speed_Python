@@ -26,21 +26,28 @@ class car:
         else:
             pass
 
+    def hand_brake(self):
+        if self.speed < 10:
+            self.speed = 0
+        else:
+            self.speed -= 10
 
 if __name__ == '__main__':
     my_car = car()
     print("I'm a car!")
     while True:
         action = input("What should I do? "
-                       "[A]ccelerate, [B]rake, "
-                       "show [O]dometer, or show average [S]peed?").upper()
-        if action not in "ABOS" or len(action) != 1:
+                       "[A]ccelerate, [B]rake, [H]and brake, "
+                       "show [O]dometer, or show average [S]peed? : ").upper()
+        if action not in "ABHOS" or len(action) != 1:
             print("I don't know how to do that")
             continue
         if action == 'A':
             my_car.accelerate()
         elif action == 'B':
             my_car.brake()
+        elif action == 'H':
+            my_car.hand_brake()
         elif action == 'O':
             print("The car has driven {} kilometers".format(my_car.odometer))
         elif action == 'S':
